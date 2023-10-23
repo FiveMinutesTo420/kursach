@@ -6,7 +6,7 @@
         <div class="flex flex-wrap justify-center lg:justify-between ">
             <div class="flex flex-col">
               <img src="{{url('images/products/'.$item->image)}}" class="" width="250" alt="">
-              <button class="py-2 px-4 bg-green-400 mt-4 rounded-md">Click to view in 3D</button>
+              <button class="py-2 px-4 bg-green-400 mt-4 rounded-md" id="3dopen">Click to view in 3D</button>
             </div>
             
             <div class="text-center text-sm w-[600px] overflow-clip h-36">
@@ -104,6 +104,51 @@
             </div>
           </div>
           
+
+          <!--3D MODAL-->
+
+          <div class="relative z-10 hidden" id="3item_modal" aria-labelledby="modal-title" role="dialog" aria-modal="true">
+            <!--
+              Background backdrop, show/hide based on modal state.
+          
+              Entering: "ease-out duration-300"
+                From: "opacity-0"
+                To: "opacity-100"
+              Leaving: "ease-in duration-200"
+                From: "opacity-100"
+                To: "opacity-0"
+            -->
+            <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
+          
+            <div class="fixed inset-0 z-10 overflow-y-auto">
+              <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0 ">
+                <!--
+                  Modal panel, show/hide based on modal state.
+          
+                  Entering: "ease-out duration-300"
+                    From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                    To: "opacity-100 translate-y-0 sm:scale-100"
+                  Leaving: "ease-in duration-200"
+                    From: "opacity-100 translate-y-0 sm:scale-100"
+                    To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
+                -->
+                <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 w-[60%] h-[700px]">
+                  <div class="bg-white p-4 flex flex-col items-center justify-center w-full">
+                    <div class="container flex justify-center m-2" id="canvas3d">
+
+                    </div>
+                    <button type="button" id="back_3item_modal_btn" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Закрыть</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!--END 3D MODAL-->
+
+
+
+
         <div class="flex">
             <div class="flex border-b w-full">
                 <button class="p-3 border-t border-l border-r hover:bg-gray-100 flex justify-between " id="firstB">
@@ -140,7 +185,11 @@
         </div>
     </div>
     @section('scripts')
-    <script src="{{url('js/item.js')}}"></script>
-        
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
+    <script type="module" src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/jsm/loaders/GLTFLoader.js"></script>
+    <!--<script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>-->
+
+    <script type="module"  src="{{url('js/item.js')}}"></script>
+    
     @endsection
 @endsection
