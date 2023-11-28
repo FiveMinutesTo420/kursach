@@ -49,30 +49,12 @@
             </div>
         </div>
         <div class="relative z-10 hidden" id="item_modal" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-            <!--
-              Background backdrop, show/hide based on modal state.
-          
-              Entering: "ease-out duration-300"
-                From: "opacity-0"
-                To: "opacity-100"
-              Leaving: "ease-in duration-200"
-                From: "opacity-100"
-                To: "opacity-0"
-            -->
+
             <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
           
             <div class="fixed inset-0 z-10 overflow-y-auto">
               <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
-                <!--
-                  Modal panel, show/hide based on modal state.
-          
-                  Entering: "ease-out duration-300"
-                    From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                    To: "opacity-100 translate-y-0 sm:scale-100"
-                  Leaving: "ease-in duration-200"
-                    From: "opacity-100 translate-y-0 sm:scale-100"
-                    To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                -->
+
                 <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
                   <div class="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                     <div class=" ">
@@ -108,33 +90,15 @@
           <!--3D MODAL-->
 
           <div class="relative z-10 hidden" id="3item_modal" aria-labelledby="modal-title" role="dialog" aria-modal="true">
-            <!--
-              Background backdrop, show/hide based on modal state.
-          
-              Entering: "ease-out duration-300"
-                From: "opacity-0"
-                To: "opacity-100"
-              Leaving: "ease-in duration-200"
-                From: "opacity-100"
-                To: "opacity-0"
-            -->
+
             <div class="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity"></div>
           
             <div class="fixed inset-0 z-10 overflow-y-auto">
               <div class="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0 ">
-                <!--
-                  Modal panel, show/hide based on modal state.
-          
-                  Entering: "ease-out duration-300"
-                    From: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                    To: "opacity-100 translate-y-0 sm:scale-100"
-                  Leaving: "ease-in duration-200"
-                    From: "opacity-100 translate-y-0 sm:scale-100"
-                    To: "opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
-                -->
+
                 <div class="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 w-[60%] h-[700px]">
                   <div class="bg-white p-4 flex flex-col items-center justify-center w-full">
-                    <div class="container flex justify-center m-2" id="canvas3d">
+                    <div class="container flex justify-center m-2 mt-16 items-center" id="canvas3d">
 
                     </div>
                     <button type="button" id="back_3item_modal_btn" class="mt-3 inline-flex w-full justify-center rounded-md bg-white px-3 py-2 text-sm font-semibold text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 hover:bg-gray-50 sm:mt-0 sm:w-auto">Закрыть</button>
@@ -176,7 +140,7 @@
             </div>
             <div class="flex hidden" id="secondEl">
                 @if($item->kindOfAnimal)
-                    Тип животного: {{$item->kindOfAnimal->name}}
+                    
                 @endif
             </div>
             <div class="flex hidden" id="thirdEl">
@@ -185,11 +149,73 @@
         </div>
     </div>
     @section('scripts')
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r121/three.min.js"></script>
-    <script type="module" src="https://cdn.rawgit.com/mrdoob/three.js/master/examples/jsm/loaders/GLTFLoader.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r126/three.min.js" integrity="sha512-n8IpKWzDnBOcBhRlHirMZOUvEq2bLRMuJGjuVqbzUJwtTsgwOgK5aS0c1JA647XWYfqvXve8k3PtZdzpipFjgg==" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
     <!--<script src="https://cdn.jsdelivr.net/npm/three@0.132.2/examples/js/controls/OrbitControls.js"></script>-->
 
-    <script type="module"  src="{{url('js/item.js')}}"></script>
-    
+    <script  src="{{url('js/item.js')}}"></script>
+    <script type="module">
+      let back_3item_modal_btn = document.getElementById('back_3item_modal_btn');
+
+      let canvas3d = document.getElementById('canvas3d')
+
+      let dopen = document.getElementById('3dopen');
+      let modal3d = document.getElementById('3item_modal')
+      back_3item_modal_btn.addEventListener('click',function(){
+    modal3d.classList.add('hidden');
+})
+      dopen.addEventListener('click',function(){
+          modal3d.classList.remove('hidden')
+          const scene = new THREE.Scene()
+          const camera = new THREE.PerspectiveCamera(
+              75,
+              window.innerWidth / window.innerHeight,
+              0.1,
+              1000
+          )
+          camera.position.z = 1
+          
+          const renderer = new THREE.WebGLRenderer({alpha:true,antialias:true})
+          renderer.setClearColor(0x000000,0)
+          renderer.setSize(1000,500)
+          canvas3d.appendChild(renderer.domElement)
+
+          const loader = new THREE.GLTFLoader()
+          const aLight = new THREE.AmbientLight(0x404040,1.2)
+          scene.add(aLight)
+          const pLight = new THREE.PointLight(0xFFFFFF,1.2)
+          pLight.position.set(0,-3,7)
+          scene.add(pLight)
+          let obj = null
+          loader.load(
+              '../images/3d/dc1/scene.gltf',
+              function(gltf){
+                  obj = gltf
+                  obj.scene.scale.set(0.2,0.2,0.2)
+                  scene.add(obj.scene)
+              },
+                (xhr) => {
+                  console.log((xhr.loaded / xhr.total) * 100 + '% loaded')
+              },
+              (error) => {
+                  console.log(error)
+              }
+          )
+
+          
+          function animate() {
+              requestAnimationFrame(animate)
+              if(obj){
+                obj.scene.rotation.y += 0.01
+              }
+              renderer.render(scene, camera)
+
+          
+          }
+
+          animate()
+
+      })
+    </script>
     @endsection
 @endsection

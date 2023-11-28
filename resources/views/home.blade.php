@@ -26,129 +26,129 @@
 
     <div class="flex  flex-wrap justify-center lg:justify-between text-center font-semibold text-sm">
         <div class="flex m-2 2xl:m-0 mt-2 2xl:mt-0 flex-col bg-white border rounded p-4 items-center justify-between w-56">
-            <img src="{{url("images/site/vetkorm150.png")}}" class="w-36 " alt="">
+            <img src="{{url("images/site/categories/__uploaded_images_shop_category_23.jpg")}}" class="w-36 " alt="">
             <p>Барная посуда</p>
         </div>
         <div class="flex m-2 2xl:m-0 flex-col bg-white border rounded p-4 items-center justify-between w-56" >
-            <img src="{{url("images/site/ruletki150.jpg")}}" class="w-36" alt="">
+            <img src="{{url("images/site/categories/rbvasvuxhwmac3ypaamrgvau1qa164.66e39b32.jpg")}}" class="w-36" alt="">
 
             <p>Посуда для праздников</p>
 
         </div>
         <div class="flex m-2 2xl:m-0 flex-col bg-white border rounded p-4 items-center justify-between w-56">
-            <img src="{{url("images/site/perenoski150.jpg")}}" class="w-36" alt="">
+            <img src="{{url("images/site/categories/lw63kvsqaogeyj3r7c7b1dmdftmlek7m.jpg")}}" class="w-36" alt="">
 
             <p>Товары для сервировки</p>
 
         </div>
         <div class="flex m-2 2xl:m-0 flex-col bg-white border rounded p-4 items-center justify-between w-56">
-            <img src="{{url("images/site/vlajka150.png")}}" class="w-36" alt="">
+            <img src="{{url("images/site/categories/Без названия.jpg")}}" class="w-36" alt="">
 
             <p>Принадлежности для сервировки</p>
             
         </div>
         <div class="flex m-2 2xl:m-0 flex-col bg-white border rounded p-4 items-center justify-between w-56">
-            <img src="{{url("images/site/akvadekor150.jpg")}}" class="w-36" alt="">
+            <img src="{{url("images/site/categories/6067391881.jpg")}}" class="w-36" alt="">
 
             <p>Декор стола</p>
             
         </div>
     </div>
     <div class="flex flex-col text-center space-y-4 ">
-        <p class="font-semibold text-xl mt-4">Сковороды </p>
+        <p class="font-semibold text-xl mt-4">Кружки </p>
         <div class="flex  flex-wrap justify-center lg:justify-between text-center font-semibold text-sm">
             <div class="flex m-2 2xl:m-0 mt-2 2xl:mt-0 flex-col bg-white border rounded p-4 items-center justify-between w-56">
-                <img src="{{url("images/site/royalcanin200.png")}}" class="w-36 " alt="">
-                <p>Royal Canin для кошек</p>
+                <img src="{{url("images/products/7332f047814529bc4ac9e58d7b80ea13.webp")}}" class="w-36 " alt="">
+                <p>Кружка Basic Pasabahce</p>
             </div>
             <div class="flex m-2 2xl:m-0 mt-2 2xl:mt-0 flex-col bg-white border rounded p-4 items-center justify-between w-56" >
-                <img src="{{url("images/site/purina200x200.png")}}" class="w-36" alt="">
+                <img src="{{url("images/products/614b72673adb00648e8d07e13bbd033f.webp")}}" class="w-36" alt="">
     
-                <p>PURINA</p>
-    
-            </div>
-            <div class="flex m-2 2xl:m-0 mt-2 2xl:mt-0 flex-col bg-white border rounded p-4 items-center justify-between w-56">
-                <img src="{{url("images/site/farmina200.png")}}" class="w-36" alt="">
-    
-                <p>Farmina</p>
+                <p>Кружка 330мл керамика</p>
     
             </div>
             <div class="flex m-2 2xl:m-0 mt-2 2xl:mt-0 flex-col bg-white border rounded p-4 items-center justify-between w-56">
-                <img src="{{url("images/site/boreal200.png")}}" class="w-36" alt="">
+                <img src="{{url("images/products/f273d23ed13b4c624b944295791bd512.webp")}}" class="w-36" alt="">
     
-                <p>Boreal для кошек</p>
+                <p>Кружка 385мл LUCKY</p>
+    
+            </div>
+            <div class="flex m-2 2xl:m-0 mt-2 2xl:mt-0 flex-col bg-white border rounded p-4 items-center justify-between w-56">
+                <img src="{{url("images/products/b458bb2c0a049fd6301d5156887b22b3.webp")}}" class="w-36" alt="">
+    
+                <p>Кружка 320мл TULU</p>
                 
             </div>
             <div class="flex m-2 2xl:m-0 mt-2 2xl:mt-0 flex-col bg-white border rounded p-4 items-center justify-between w-56">
-                <img src="{{url("images/site/derlaklogo200.png")}}" class="w-36" alt="">
+                <img src="{{url("images/products/65f09593076abc8581638a1395afad4d.webp")}}" class="w-36" alt="">
     
-                <p>Деревенские лакомства</p>
+                <p>Кружка 410мл Капли </p>
                 
             </div>
         </div>
     </div>
     <div class="flex flex-col text-center space-y-4">
-        <p class="font-semibold text-xl  mt-4">Кастрюли: </p>
+        <p class="font-semibold text-xl  mt-4">Блюда: </p>
         <div class="flex  flex-wrap justify-center lg:justify-between text-center font-semibold text-sm">
             <div class="flex m-2 2xl:m-0 mt-2 2xl:mt-0 flex-col bg-white border rounded p-4 items-center justify-between w-56">
                 <img src="{{url("images/site/royalcanin200.png")}}" class="w-36 " alt="">
-                <p>Royal Canin для собак</p>
+                <p></p>
             </div>
             <div class="flex m-2 2xl:m-0 mt-2 2xl:mt-0 flex-col bg-white border rounded p-4 items-center justify-between w-56" >
                 <img src="{{url("images/site/purina200x200.png")}}" class="w-36" alt="">
     
-                <p>PURINA</p>
+                <p></p>
     
             </div>
             <div class="flex m-2 2xl:m-0 mt-2 2xl:mt-0 flex-col bg-white border rounded p-4 items-center justify-between w-56">
                 <img src="{{url("images/site/farmina200.png")}}" class="w-36" alt="">
     
-                <p>Farmina</p>
+                <p></p>
     
             </div>
             <div class="flex m-2 2xl:m-0 mt-2 2xl:mt-0 flex-col bg-white border rounded p-4 items-center justify-between w-56">
                 <img src="{{url("images/site/territoriyalogo200.png")}}" class="w-36" alt="">
     
-                <p>ТерриториЯ™</p>
+                <p></p>
                 
             </div>
             <div class="flex m-2 2xl:m-0 mt-2 2xl:mt-0 flex-col bg-white border rounded p-4 items-center justify-between w-56">
                 <img src="{{url("images/site/fundoglogo200.png")}}" class="w-36" alt="">
     
-                <p>Fun Dog</p>
+                <p> </p>
                 
             </div>
         </div>
     </div>
     <div class="flex flex-col text-center space-y-4">
-        <p class="font-semibold text-xl  mt-4">Керамические товары:</p>
+        <p class="font-semibold text-xl  mt-4">Графины:</p>
         <div class="flex  flex-wrap justify-center lg:justify-between text-center font-semibold text-sm">
             <div class="flex mt-2 2xl:mt-0 flex-col bg-white border rounded p-4 items-center justify-between w-56">
                 <img src="{{url("images/site/birds170.jpg")}}" class="w-36 " alt="">
-                <p>Товары для птиц</p>
+                <p></p>
             </div>
             <div class="flex m-2 2xl:m-0 mt-2 2xl:mt-0 flex-col bg-white border rounded p-4 items-center justify-between w-56" >
                 <img src="{{url("images/site/kak_chasto_kormit_cherepah170.jpg")}}" class="w-36" alt="">
     
-                <p>Корма для рептилий и черепах</p>
+                <p></p>
     
             </div>
             <div class="flex m-2 2xl:m-0 mt-2 2xl:mt-0 flex-col bg-white border rounded p-4 items-center justify-between w-56">
                 <img src="{{url("images/site/hamsterhome170.jpg")}}" class="w-36" alt="">
     
-                <p>Товары для грызунов</p>
+                <p></p>
     
             </div>
             <div class="flex m-2 2xl:m-0 mt-2 2xl:mt-0 flex-col bg-white border rounded p-4 items-center justify-between w-56">
                 <img src="{{url("images/site/section170.jpg")}}" class="w-36" alt="">
     
-                <p>Витамины</p>
+                <p></p>
                 
             </div>
             <div class="flex m-2 2xl:m-0 mt-2 2xl:mt-0 flex-col bg-white border rounded p-4 items-center justify-between w-56">
                 <img src="{{url("images/site/grumingcare170.jpg")}}" class="w-36" alt="">
     
-                <p>Груминг и уход</p>
+                <p></p>
                 
             </div>
         </div>

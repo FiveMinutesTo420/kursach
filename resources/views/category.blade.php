@@ -39,11 +39,9 @@
             <div class="flex w-4/5  mb-2 text-xs font-semibold ">
               @if(Auth::check())
                 <button @if(Auth::check() == false) onclick="showCartModal()" @else onclick="addToCart({{$product->id}},'{{route('add_to_cart',$product->id)}}','{{url('images/products/'.$product->image)}}','{{route('get_item',$product->id)}}')" @endif  class="flex bg-white border drop-shadow-sm w-full text-gray-900 items-center justify-center space-x-1 p-2 rounded">
-     
                     В корзину
                 </button>
                 @endif
-    
             </div>
         </div>
         @endif
