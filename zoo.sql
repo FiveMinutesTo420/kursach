@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.3
+-- version 5.2.0
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Дек 18 2023 г., 16:05
--- Версия сервера: 8.0.29
--- Версия PHP: 8.1.5
+-- Время создания: Дек 18 2023 г., 19:25
+-- Версия сервера: 8.0.30
+-- Версия PHP: 8.1.9
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -76,8 +76,8 @@ INSERT INTO `carts` (`id`, `user_id`, `item_id`, `count`, `created_at`, `updated
 
 CREATE TABLE `categories` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -99,11 +99,11 @@ INSERT INTO `categories` (`id`, `name`, `image`) VALUES
 
 CREATE TABLE `failed_jobs` (
   `id` bigint UNSIGNED NOT NULL,
-  `uuid` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
-  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
-  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `uuid` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `connection` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -115,7 +115,7 @@ CREATE TABLE `failed_jobs` (
 
 CREATE TABLE `migrations` (
   `id` int UNSIGNED NOT NULL,
-  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `migration` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `batch` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -141,7 +141,9 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 (16, '2023_04_09_162204_add_status_columng_to_users_table', 9),
 (17, '2023_04_09_163103_create_orders_table', 10),
 (18, '2023_04_09_163821_add_orderid_column_to_carts_table', 11),
-(19, '2023_04_09_164556_change_orderid_column_to_carts_table', 12);
+(19, '2023_04_09_164556_change_orderid_column_to_carts_table', 12),
+(20, '2023_12_18_150443_add_3dlink_to_products_table', 13),
+(21, '2023_12_18_152058_update_users_table', 14);
 
 -- --------------------------------------------------------
 
@@ -152,8 +154,8 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 CREATE TABLE `orders` (
   `id` bigint UNSIGNED NOT NULL,
   `user_id` bigint UNSIGNED NOT NULL,
-  `status` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Новый',
-  `comment` text COLLATE utf8mb4_unicode_ci,
+  `status` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL DEFAULT 'Новый',
+  `comment` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -172,8 +174,8 @@ INSERT INTO `orders` (`id`, `user_id`, `status`, `comment`, `created_at`, `updat
 --
 
 CREATE TABLE `password_resets` (
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -185,11 +187,11 @@ CREATE TABLE `password_resets` (
 
 CREATE TABLE `personal_access_tokens` (
   `id` bigint UNSIGNED NOT NULL,
-  `tokenable_type` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tokenable_type` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `tokenable_id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `token` varchar(64) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `abilities` text COLLATE utf8mb4_unicode_ci,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `abilities` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci,
   `last_used_at` timestamp NULL DEFAULT NULL,
   `expires_at` timestamp NULL DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
@@ -204,10 +206,11 @@ CREATE TABLE `personal_access_tokens` (
 
 CREATE TABLE `products` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `description` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `description` text CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `price` int NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `tdlink` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `in_stock` tinyint(1) NOT NULL,
   `category_id` bigint UNSIGNED NOT NULL,
   `sub_category_id` bigint UNSIGNED DEFAULT NULL,
@@ -220,37 +223,37 @@ CREATE TABLE `products` (
 -- Дамп данных таблицы `products`
 --
 
-INSERT INTO `products` (`id`, `name`, `description`, `price`, `image`, `in_stock`, `category_id`, `sub_category_id`, `kind_of_animal`, `created_at`, `updated_at`) VALUES
-(57, 'Графин', 'Графин — широкий книзу стеклянный или хрустальный прозрачный сосуд с длинным узким горлом, закрывающимся незакреплённой пробкой. Графин используется для подачи и хранения воды и напитков, в том числе крепких алкогольных — водки, коньяка, настоек, а также для декантации вина. Вместимость графина от 100 до 1000 см3.', 1234, 'decante-1.png', 8, 1, 1, NULL, NULL, '2023-10-23 02:22:06'),
-(58, 'Кружка Basic Pasabahce', 'Турецкая компания Pasabahce существует на мировом рынке уже полвека и успешно реализует стеклянную посуду более чем в ста странах мира. Современный дизайн, доступные цены и высокое качество стеклянных изделий позволили этой марке завоевать популярность и у барменов, и у домохозяек. Кружка Pasabahce выполнена из упрочненного непористого стекла. Прозрачная кружка классической формы подчеркнет насыщенность цвета и яркость вкуса любимого напитка. Кружка практична, проста в уходе и удобна в эксплуатации. Ее можно мыть в посудомоечной машине и использовать в микроволновой печи.', 89, '7332f047814529bc4ac9e58d7b80ea13.webp', 10, 3, 20, NULL, NULL, NULL),
-(59, 'Кружка 330мл керамика', '', 129, '614b72673adb00648e8d07e13bbd033f.webp', 10, 3, 20, NULL, NULL, NULL),
-(60, 'Кружка 385мл LUCKY', '', 299, 'f273d23ed13b4c624b944295791bd512.webp', 9, 3, 20, NULL, NULL, '2023-10-30 05:16:12'),
-(63, 'Кружка 320мл TULU PORSELEN DENIZ ', '', 149, 'b458bb2c0a049fd6301d5156887b22b3.webp', 10, 3, 20, NULL, NULL, NULL),
-(64, 'Кружка 410мл Капли ', '', 129, '65f09593076abc8581638a1395afad4d.webp', 9, 3, 20, NULL, NULL, '2023-10-30 05:16:15'),
-(65, 'Ваза-конфетница на ножке 15см', '', 379, '130dec7f3f4bc3e218fd08353a33b124.webp', 10, 5, 14, NULL, NULL, NULL),
-(66, 'Блюдо 33см EFE glass', '', 699, '7adebb528a7f27f0a80a1f0090838d78.webp', 10, 5, 14, NULL, NULL, NULL),
-(67, 'Блюдо (ляган) 34см RISHTON', '', 799, 'ebb7406615dfc53ab9b9d69653cb20ca.webp', 10, 5, 14, NULL, NULL, NULL),
-(68, 'Блюдо 35см EFE glass', '', 799, '01fb2e7525a99cfa68dd1d9c268c4c9a.webp', 10, 5, 14, NULL, NULL, NULL),
-(69, 'Ваза-конфетница 17см EFE glass ', '', 229, '020b008587d7cfcb67d1fc960d2cd5d5.webp', 10, 5, 14, NULL, NULL, NULL),
-(70, 'СТАКАНЫ БУМАЖНЫЕ МОНСТРИКИ 200МЛ 6ШТ', '', 65, '6078775.jpg', 10, 2, NULL, NULL, NULL, NULL),
-(71, 'ТАРЕЛКИ БУМАЖНЫЕ ДИНОЗАВРЫ 6 ШТ', '', 61, '6078768.jpg', 10, 2, NULL, NULL, NULL, NULL),
-(72, 'СТАКАНЫ БУМАЖНЫЕ МИШКИ 200МЛ 6 ШТ', '', 52, '6078799.jpg', 10, 2, NULL, NULL, NULL, NULL),
-(73, 'СТАКАНЫ БУМАЖНЫЕ КАВАИ 200МЛ 6 ШТ', '', 52, '6078782.jpg', 10, 2, NULL, NULL, NULL, NULL),
-(74, 'ТАРЕЛКИ БУМАЖНЫЕ ЛАМИНИРОВАННЫЕ 18СМ 6ШТ', '', 70, '6056285.jpg', 10, 2, NULL, NULL, NULL, NULL),
-(77, 'Графин 900мл LUCKY', '', 1299, '1972028d32da7d3494bb6f044e74cc12.webp', 10, 1, 1, NULL, NULL, NULL),
-(78, 'Графин 650мл LUCKY с бамбуковой крышкой', '', 999, '99e8d291baf876786491c9d978da9f63.webp', 10, 1, 1, NULL, NULL, NULL),
-(79, 'Графин 1л LUCKY Янтарь', '', 1199, '3f4f7d7ebca4662098ab5518be3c6b5f.webp', 10, 1, 1, NULL, NULL, NULL),
-(80, 'BACCHUS Графин 1л PASABAHCE', '', 299, '0b4d5b16d7c16c1b44463078c16d2b16.webp', 10, 1, 1, NULL, NULL, NULL),
-(81, 'Скатерть из хлопка с пропиткой', '', 4249, '3ee4d1c2e1597e8a7f0d7dcb4e7eef1d.webp', 10, 4, NULL, NULL, NULL, NULL),
-(82, 'Дорожка столовая с пропиткой против пятен', '', 799, '3d6c0d579b4768d77f33111fa4f4aac6.webp', 10, 4, NULL, NULL, NULL, NULL),
-(83, 'Комплект из 4 столовых салфеток, Winter berry', '', 2849, '19248d6bbae6050df604480946654620.webp', 10, 4, NULL, NULL, NULL, NULL),
-(84, 'Скатерть круглая из жатого полиэстера CERYAS', '', 2099, '7350db7c3c6cd5813be4ff6acbd1bcb8.webp', 10, 4, NULL, NULL, NULL, NULL),
-(85, 'Комплект из двух подложек под столовые приборы из поликотона, Augusta', '', 1599, '6cf8ff68023be16b6bf5f14aec7726b5.webp', 10, 4, NULL, NULL, NULL, NULL),
-(86, 'Блюдо сервировочное DE\'NASTIA ', '', 799, 'e6898d6a68a95690d46ab69a669e2672.webp', 10, 3, 19, NULL, NULL, NULL),
-(87, 'Блюдо овальное 31,5см бежевый', '', 349, '57953a6e8863de6bd8271f46b9a07743.webp', 10, 3, 19, NULL, NULL, NULL),
-(88, 'Блюдо сервировочное 25-29см GLASSCOM', '', 499, 'aec214e5be0964fd3d8bcc7af78990cd.webp', 10, 3, 19, NULL, NULL, NULL),
-(89, 'Блюдо сервировочное 25см GLASSCOM', '', 499, '9d19bb78a66fe9938d4715a7930665e6.webp', 10, 3, 19, NULL, NULL, NULL),
-(90, 'Блюдо овальное 29см CMIELOW', '', 1449, '230231fa13b4f2579e7715082c32da1c.jpg', 10, 3, 19, NULL, NULL, NULL);
+INSERT INTO `products` (`id`, `name`, `description`, `price`, `image`, `tdlink`, `in_stock`, `category_id`, `sub_category_id`, `kind_of_animal`, `created_at`, `updated_at`) VALUES
+(57, 'Графин', 'Графин — широкий книзу стеклянный или хрустальный прозрачный сосуд с длинным узким горлом, закрывающимся незакреплённой пробкой. Графин используется для подачи и хранения воды и напитков, в том числе крепких алкогольных — водки, коньяка, настоек, а также для декантации вина. Вместимость графина от 100 до 1000 см3.', 1234, 'decante-1.png', '../images/3d/dc1/scene.gltf', 8, 1, 1, NULL, NULL, '2023-10-23 02:22:06'),
+(58, 'Кружка Basic Pasabahce', 'Турецкая компания Pasabahce существует на мировом рынке уже полвека и успешно реализует стеклянную посуду более чем в ста странах мира. Современный дизайн, доступные цены и высокое качество стеклянных изделий позволили этой марке завоевать популярность и у барменов, и у домохозяек. Кружка Pasabahce выполнена из упрочненного непористого стекла. Прозрачная кружка классической формы подчеркнет насыщенность цвета и яркость вкуса любимого напитка. Кружка практична, проста в уходе и удобна в эксплуатации. Ее можно мыть в посудомоечной машине и использовать в микроволновой печи.', 89, '7332f047814529bc4ac9e58d7b80ea13.webp', NULL, 10, 3, 20, NULL, NULL, NULL),
+(59, 'Кружка 330мл керамика', '', 129, '614b72673adb00648e8d07e13bbd033f.webp', NULL, 10, 3, 20, NULL, NULL, NULL),
+(60, 'Кружка 385мл LUCKY', '', 299, 'f273d23ed13b4c624b944295791bd512.webp', NULL, 9, 3, 20, NULL, NULL, '2023-10-30 05:16:12'),
+(63, 'Кружка 320мл TULU PORSELEN DENIZ ', '', 149, 'b458bb2c0a049fd6301d5156887b22b3.webp', NULL, 10, 3, 20, NULL, NULL, NULL),
+(64, 'Кружка 410мл Капли ', '', 129, '65f09593076abc8581638a1395afad4d.webp', NULL, 9, 3, 20, NULL, NULL, '2023-10-30 05:16:15'),
+(65, 'Ваза-конфетница на ножке 15см', '', 379, '130dec7f3f4bc3e218fd08353a33b124.webp', NULL, 10, 5, 14, NULL, NULL, NULL),
+(66, 'Блюдо 33см EFE glass', '', 699, '7adebb528a7f27f0a80a1f0090838d78.webp', NULL, 10, 5, 14, NULL, NULL, NULL),
+(67, 'Блюдо (ляган) 34см RISHTON', '', 799, 'ebb7406615dfc53ab9b9d69653cb20ca.webp', NULL, 10, 5, 14, NULL, NULL, NULL),
+(68, 'Блюдо 35см EFE glass', '', 799, '01fb2e7525a99cfa68dd1d9c268c4c9a.webp', NULL, 10, 5, 14, NULL, NULL, NULL),
+(69, 'Ваза-конфетница 17см EFE glass ', '', 229, '020b008587d7cfcb67d1fc960d2cd5d5.webp', NULL, 10, 5, 14, NULL, NULL, NULL),
+(70, 'СТАКАНЫ БУМАЖНЫЕ МОНСТРИКИ 200МЛ 6ШТ', '', 65, '6078775.jpg', NULL, 10, 2, NULL, NULL, NULL, NULL),
+(71, 'ТАРЕЛКИ БУМАЖНЫЕ ДИНОЗАВРЫ 6 ШТ', '', 61, '6078768.jpg', NULL, 10, 2, NULL, NULL, NULL, NULL),
+(72, 'СТАКАНЫ БУМАЖНЫЕ МИШКИ 200МЛ 6 ШТ', '', 52, '6078799.jpg', NULL, 10, 2, NULL, NULL, NULL, NULL),
+(73, 'СТАКАНЫ БУМАЖНЫЕ КАВАИ 200МЛ 6 ШТ', '', 52, '6078782.jpg', NULL, 10, 2, NULL, NULL, NULL, NULL),
+(74, 'ТАРЕЛКИ БУМАЖНЫЕ ЛАМИНИРОВАННЫЕ 18СМ 6ШТ', '', 70, '6056285.jpg', NULL, 10, 2, NULL, NULL, NULL, NULL),
+(77, 'Графин 900мл LUCKY', '', 1299, '1972028d32da7d3494bb6f044e74cc12.webp', NULL, 10, 1, 1, NULL, NULL, NULL),
+(78, 'Графин 650мл LUCKY с бамбуковой крышкой', '', 999, '99e8d291baf876786491c9d978da9f63.webp', NULL, 10, 1, 1, NULL, NULL, NULL),
+(79, 'Графин 1л LUCKY Янтарь', '', 1199, '3f4f7d7ebca4662098ab5518be3c6b5f.webp', NULL, 10, 1, 1, NULL, NULL, NULL),
+(80, 'BACCHUS Графин 1л PASABAHCE', '', 299, '0b4d5b16d7c16c1b44463078c16d2b16.webp', NULL, 10, 1, 1, NULL, NULL, NULL),
+(81, 'Скатерть из хлопка с пропиткой', '', 4249, '3ee4d1c2e1597e8a7f0d7dcb4e7eef1d.webp', NULL, 10, 4, NULL, NULL, NULL, NULL),
+(82, 'Дорожка столовая с пропиткой против пятен', '', 799, '3d6c0d579b4768d77f33111fa4f4aac6.webp', NULL, 10, 4, NULL, NULL, NULL, NULL),
+(83, 'Комплект из 4 столовых салфеток, Winter berry', '', 2849, '19248d6bbae6050df604480946654620.webp', NULL, 10, 4, NULL, NULL, NULL, NULL),
+(84, 'Скатерть круглая из жатого полиэстера CERYAS', '', 2099, '7350db7c3c6cd5813be4ff6acbd1bcb8.webp', NULL, 10, 4, NULL, NULL, NULL, NULL),
+(85, 'Комплект из двух подложек под столовые приборы из поликотона, Augusta', '', 1599, '6cf8ff68023be16b6bf5f14aec7726b5.webp', NULL, 10, 4, NULL, NULL, NULL, NULL),
+(86, 'Блюдо сервировочное DE\'NASTIA ', '', 799, 'e6898d6a68a95690d46ab69a669e2672.webp', NULL, 10, 3, 19, NULL, NULL, NULL),
+(87, 'Блюдо овальное 31,5см бежевый', '', 349, '57953a6e8863de6bd8271f46b9a07743.webp', NULL, 10, 3, 19, NULL, NULL, NULL),
+(88, 'Блюдо сервировочное 25-29см GLASSCOM', '', 499, 'aec214e5be0964fd3d8bcc7af78990cd.webp', '../images/3d/tar/scene.gltf', 10, 3, 19, NULL, NULL, NULL),
+(89, 'Блюдо сервировочное 25см GLASSCOM', '', 499, '9d19bb78a66fe9938d4715a7930665e6.webp', NULL, 10, 3, 19, NULL, NULL, NULL),
+(90, 'Блюдо овальное 29см CMIELOW', '', 1449, '230231fa13b4f2579e7715082c32da1c.jpg', NULL, 10, 3, 19, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -260,9 +263,9 @@ INSERT INTO `products` (`id`, `name`, `description`, `price`, `image`, `in_stock
 
 CREATE TABLE `sub_categories` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `category_id` bigint UNSIGNED NOT NULL,
-  `image` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `image` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -285,21 +288,21 @@ INSERT INTO `sub_categories` (`id`, `name`, `category_id`, `image`) VALUES
 
 CREATE TABLE `users` (
   `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `surname` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `surname` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `email` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `status` int NOT NULL DEFAULT '1',
   `email_verified_at` timestamp NULL DEFAULT NULL,
-  `password` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `remember_token` varchar(100) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `remember_token` varchar(100) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `created_at` timestamp NULL DEFAULT NULL,
   `updated_at` timestamp NULL DEFAULT NULL,
-  `number` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `country` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `region` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
-  `city` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `number` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `country` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `region` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
+  `city` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL,
   `postcode` int NOT NULL,
-  `address` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
+  `address` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
@@ -412,7 +415,7 @@ ALTER TABLE `failed_jobs`
 -- AUTO_INCREMENT для таблицы `migrations`
 --
 ALTER TABLE `migrations`
-  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
+  MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT для таблицы `orders`
