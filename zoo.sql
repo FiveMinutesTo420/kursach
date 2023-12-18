@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Хост: 127.0.0.1:3306
--- Время создания: Ноя 28 2023 г., 18:20
+-- Время создания: Дек 18 2023 г., 16:05
 -- Версия сервера: 8.0.29
 -- Версия PHP: 8.1.5
 
@@ -66,8 +66,7 @@ INSERT INTO `carts` (`id`, `user_id`, `item_id`, `count`, `created_at`, `updated
 (32, 10, 1, 1, '2023-04-17 05:23:37', '2023-04-17 05:23:41', 21),
 (33, 8, 57, 3, '2023-10-23 01:40:00', '2023-10-23 01:54:38', 22),
 (34, 8, 57, 1, '2023-10-23 02:22:06', '2023-10-23 02:22:16', 23),
-(35, 8, 60, 1, '2023-10-30 05:16:12', '2023-10-30 05:16:12', NULL),
-(36, 8, 64, 1, '2023-10-30 05:16:15', '2023-10-30 05:16:15', NULL);
+(36, 8, 64, 1, '2023-10-30 05:16:15', '2023-12-18 06:00:59', 24);
 
 -- --------------------------------------------------------
 
@@ -107,24 +106,6 @@ CREATE TABLE `failed_jobs` (
   `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
   `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Структура таблицы `kind_animals`
---
-
-CREATE TABLE `kind_animals` (
-  `id` bigint UNSIGNED NOT NULL,
-  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Дамп данных таблицы `kind_animals`
---
-
-INSERT INTO `kind_animals` (`id`, `name`) VALUES
-(1, 'Рыба');
 
 -- --------------------------------------------------------
 
@@ -245,7 +226,31 @@ INSERT INTO `products` (`id`, `name`, `description`, `price`, `image`, `in_stock
 (59, 'Кружка 330мл керамика', '', 129, '614b72673adb00648e8d07e13bbd033f.webp', 10, 3, 20, NULL, NULL, NULL),
 (60, 'Кружка 385мл LUCKY', '', 299, 'f273d23ed13b4c624b944295791bd512.webp', 9, 3, 20, NULL, NULL, '2023-10-30 05:16:12'),
 (63, 'Кружка 320мл TULU PORSELEN DENIZ ', '', 149, 'b458bb2c0a049fd6301d5156887b22b3.webp', 10, 3, 20, NULL, NULL, NULL),
-(64, 'Кружка 410мл Капли ', '', 129, '65f09593076abc8581638a1395afad4d.webp', 9, 3, 20, NULL, NULL, '2023-10-30 05:16:15');
+(64, 'Кружка 410мл Капли ', '', 129, '65f09593076abc8581638a1395afad4d.webp', 9, 3, 20, NULL, NULL, '2023-10-30 05:16:15'),
+(65, 'Ваза-конфетница на ножке 15см', '', 379, '130dec7f3f4bc3e218fd08353a33b124.webp', 10, 5, 14, NULL, NULL, NULL),
+(66, 'Блюдо 33см EFE glass', '', 699, '7adebb528a7f27f0a80a1f0090838d78.webp', 10, 5, 14, NULL, NULL, NULL),
+(67, 'Блюдо (ляган) 34см RISHTON', '', 799, 'ebb7406615dfc53ab9b9d69653cb20ca.webp', 10, 5, 14, NULL, NULL, NULL),
+(68, 'Блюдо 35см EFE glass', '', 799, '01fb2e7525a99cfa68dd1d9c268c4c9a.webp', 10, 5, 14, NULL, NULL, NULL),
+(69, 'Ваза-конфетница 17см EFE glass ', '', 229, '020b008587d7cfcb67d1fc960d2cd5d5.webp', 10, 5, 14, NULL, NULL, NULL),
+(70, 'СТАКАНЫ БУМАЖНЫЕ МОНСТРИКИ 200МЛ 6ШТ', '', 65, '6078775.jpg', 10, 2, NULL, NULL, NULL, NULL),
+(71, 'ТАРЕЛКИ БУМАЖНЫЕ ДИНОЗАВРЫ 6 ШТ', '', 61, '6078768.jpg', 10, 2, NULL, NULL, NULL, NULL),
+(72, 'СТАКАНЫ БУМАЖНЫЕ МИШКИ 200МЛ 6 ШТ', '', 52, '6078799.jpg', 10, 2, NULL, NULL, NULL, NULL),
+(73, 'СТАКАНЫ БУМАЖНЫЕ КАВАИ 200МЛ 6 ШТ', '', 52, '6078782.jpg', 10, 2, NULL, NULL, NULL, NULL),
+(74, 'ТАРЕЛКИ БУМАЖНЫЕ ЛАМИНИРОВАННЫЕ 18СМ 6ШТ', '', 70, '6056285.jpg', 10, 2, NULL, NULL, NULL, NULL),
+(77, 'Графин 900мл LUCKY', '', 1299, '1972028d32da7d3494bb6f044e74cc12.webp', 10, 1, 1, NULL, NULL, NULL),
+(78, 'Графин 650мл LUCKY с бамбуковой крышкой', '', 999, '99e8d291baf876786491c9d978da9f63.webp', 10, 1, 1, NULL, NULL, NULL),
+(79, 'Графин 1л LUCKY Янтарь', '', 1199, '3f4f7d7ebca4662098ab5518be3c6b5f.webp', 10, 1, 1, NULL, NULL, NULL),
+(80, 'BACCHUS Графин 1л PASABAHCE', '', 299, '0b4d5b16d7c16c1b44463078c16d2b16.webp', 10, 1, 1, NULL, NULL, NULL),
+(81, 'Скатерть из хлопка с пропиткой', '', 4249, '3ee4d1c2e1597e8a7f0d7dcb4e7eef1d.webp', 10, 4, NULL, NULL, NULL, NULL),
+(82, 'Дорожка столовая с пропиткой против пятен', '', 799, '3d6c0d579b4768d77f33111fa4f4aac6.webp', 10, 4, NULL, NULL, NULL, NULL),
+(83, 'Комплект из 4 столовых салфеток, Winter berry', '', 2849, '19248d6bbae6050df604480946654620.webp', 10, 4, NULL, NULL, NULL, NULL),
+(84, 'Скатерть круглая из жатого полиэстера CERYAS', '', 2099, '7350db7c3c6cd5813be4ff6acbd1bcb8.webp', 10, 4, NULL, NULL, NULL, NULL),
+(85, 'Комплект из двух подложек под столовые приборы из поликотона, Augusta', '', 1599, '6cf8ff68023be16b6bf5f14aec7726b5.webp', 10, 4, NULL, NULL, NULL, NULL),
+(86, 'Блюдо сервировочное DE\'NASTIA ', '', 799, 'e6898d6a68a95690d46ab69a669e2672.webp', 10, 3, 19, NULL, NULL, NULL),
+(87, 'Блюдо овальное 31,5см бежевый', '', 349, '57953a6e8863de6bd8271f46b9a07743.webp', 10, 3, 19, NULL, NULL, NULL),
+(88, 'Блюдо сервировочное 25-29см GLASSCOM', '', 499, 'aec214e5be0964fd3d8bcc7af78990cd.webp', 10, 3, 19, NULL, NULL, NULL),
+(89, 'Блюдо сервировочное 25см GLASSCOM', '', 499, '9d19bb78a66fe9938d4715a7930665e6.webp', 10, 3, 19, NULL, NULL, NULL),
+(90, 'Блюдо овальное 29см CMIELOW', '', 1449, '230231fa13b4f2579e7715082c32da1c.jpg', 10, 3, 19, NULL, NULL, NULL);
 
 -- --------------------------------------------------------
 
@@ -267,8 +272,6 @@ CREATE TABLE `sub_categories` (
 INSERT INTO `sub_categories` (`id`, `name`, `category_id`, `image`) VALUES
 (1, 'Графины', 1, '6344_0-1000x1340-120x120.jpg'),
 (2, 'Кувшины', 1, '5666645-120x120.png'),
-(6, 'Для приготовления напитков', 1, '69025024_1_9-120x120.jpg'),
-(7, 'Предметы для питья', 1, 'akvadekor-120x120.jpg'),
 (14, 'Блюда, вазы', 5, '_вет-120x120.jpg'),
 (15, 'Сервировка', 5, 'Ветеринарная диета для кошек'),
 (19, 'Блюда', 3, ''),
@@ -339,12 +342,6 @@ ALTER TABLE `failed_jobs`
   ADD UNIQUE KEY `failed_jobs_uuid_unique` (`uuid`);
 
 --
--- Индексы таблицы `kind_animals`
---
-ALTER TABLE `kind_animals`
-  ADD PRIMARY KEY (`id`);
-
---
 -- Индексы таблицы `migrations`
 --
 ALTER TABLE `migrations`
@@ -412,12 +409,6 @@ ALTER TABLE `failed_jobs`
   MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT;
 
 --
--- AUTO_INCREMENT для таблицы `kind_animals`
---
-ALTER TABLE `kind_animals`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
 -- AUTO_INCREMENT для таблицы `migrations`
 --
 ALTER TABLE `migrations`
@@ -427,7 +418,7 @@ ALTER TABLE `migrations`
 -- AUTO_INCREMENT для таблицы `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=25;
 
 --
 -- AUTO_INCREMENT для таблицы `personal_access_tokens`
@@ -439,7 +430,7 @@ ALTER TABLE `personal_access_tokens`
 -- AUTO_INCREMENT для таблицы `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=65;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=91;
 
 --
 -- AUTO_INCREMENT для таблицы `sub_categories`
