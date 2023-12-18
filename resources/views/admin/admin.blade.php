@@ -66,7 +66,7 @@
                         </div>
                     </div>
                     @empty
-                        <p class="py-4">Нет заказов</p>
+                        <p class="py-4">Нет активных заказов</p>
                     @endforelse
                 </div>
             </div>

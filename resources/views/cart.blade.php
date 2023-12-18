@@ -68,7 +68,7 @@
             </div>
             @empty
                 <div class="p-4 text-2xl">
-                    Корзина пуста, Милорд
+                    Корзина пуста
                 </div>
             @endforelse
 

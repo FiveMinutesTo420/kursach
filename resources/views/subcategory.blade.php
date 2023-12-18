@@ -18,7 +18,7 @@
         @foreach($sub_category->products as $product)
         @if($product->in_stock > 0)
         <div class="flex flex-col mt-1.5 lg:text-sm lg:w-56 text-xs w-[48%] border items-center justify-between text-center space-y-2 p-2">
-            <img src="{{url('images/products/'.$product->image)}}" class="w-5/6 h-40" alt="">
+            <img src="{{url('images/products/'.$product->image)}}" class="w-[70%] h-40" alt="">
             <a href="{{route('item',$product->id)}}" class="hover:text-red-500 text-sm ">{{$product->name}}</a>
             <p class="font-semibold">{{$product->price}}руб.</p>
             <div class="flex w-4/5  mb-2 text-xs font-semibold ">

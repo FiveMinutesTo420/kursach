@@ -51,9 +51,9 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/cart/delete/{item}', [ItemController::class, 'delete_item_from_cart'])->name('delete_item_from_cart');
 });
 Route::middleware(['auth', 'admin'])->group(function () {
-    Route::get('/admin', AdminController::class)->name('admin');
-    Route::post('/admin/delete/category/{category}', [AdminController::class, 'deleteCategory'])->name('admin.category.delete');
-    Route::post('/change/order/status/{order}', [AdminController::class, 'changeOrderStatus'])->name('admin.change.status');
+    //Route::get('/admin', AdminController::class)->name('admin');
+    //Route::post('/admin/delete/category/{category}', [AdminController::class, 'deleteCategory'])->name('admin.category.delete');
+    //Route::post('/change/order/status/{order}', [AdminController::class, 'changeOrderStatus'])->name('admin.change.status');
 });
 Route::post('/search', [ItemController::class, 'search'])->name('search');
 Route::get('/search', [ItemController::class, 'search_p'])->name("search_p");
