@@ -35,12 +35,15 @@ thirdB.addEventListener('click',function(){
     firstEl.classList.add('hidden');
     thirdEl.classList.remove('hidden');
 })
-buy.addEventListener('click',function(){
-    item_modal.classList.remove('hidden');
-    count_item_modal.innerText = "x" + document.getElementById('count_input').value;
-    document.getElementById('count_cart').value = document.getElementById('count_input').value;
-    
-})
+if(buy){
+    buy.addEventListener('click',function(){
+        item_modal.classList.remove('hidden');
+        count_item_modal.innerText = "x" + document.getElementById('count_input').value;
+        document.getElementById('count_cart').value = document.getElementById('count_input').value;
+        
+    })
+}
+
 back_item_modal_btn.addEventListener('click',function(){
     item_modal.classList.add('hidden');
 })

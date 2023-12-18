@@ -6,7 +6,9 @@
         <div class="flex flex-wrap justify-center lg:justify-between ">
             <div class="flex flex-col">
               <img src="{{url('images/products/'.$item->image)}}" class="" width="250" alt="">
+              @if($item->tdlink != null)
               <button class="py-2 px-4 bg-green-400 mt-4 rounded-md" id="3dopen">Click to view in 3D</button>
+              @endif
             </div>
             
             <div class="text-center text-sm w-[600px] overflow-clip h-36">
@@ -148,6 +150,7 @@
             </div>
         </div>
     </div>
+    <input type="hidden" value="{{$item->tdlink}}" id="tdlink">
     @section('scripts')
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r126/three.min.js" integrity="sha512-n8IpKWzDnBOcBhRlHirMZOUvEq2bLRMuJGjuVqbzUJwtTsgwOgK5aS0c1JA647XWYfqvXve8k3PtZdzpipFjgg==" crossorigin="anonymous"></script>
     <script src="https://unpkg.com/three@0.126.0/examples/js/loaders/GLTFLoader.js"></script>
@@ -160,12 +163,13 @@
       let canvas3d = document.getElementById('canvas3d')
 
       let dopen = document.getElementById('3dopen');
-      let modal3d = document.getElementById('3item_modal')
+      let modal3d = document.getElementById('3item_modal');
       back_3item_modal_btn.addEventListener('click',function(){
           canvas3d.innerHTML = "";
           modal3d.classList.add('hidden');
       })
-      dopen.addEventListener('click',function(){
+      let tdlink = document.getElementById('tdlink').value;
+        dopen.addEventListener('click',function(){
           modal3d.classList.remove('hidden')
           const scene = new THREE.Scene()
           const camera = new THREE.PerspectiveCamera(
@@ -189,7 +193,7 @@
           scene.add(pLight)
           let obj = null
           loader.load(
-              '../images/3d/dc1/scene.gltf',
+              tdlink,
               function(gltf){
                   obj = gltf
                   obj.scene.scale.set(0.2,0.2,0.2)
@@ -217,6 +221,8 @@
           animate()
 
       })
+      
+      
     </script>
     @endsection
 @endsection
