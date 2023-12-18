@@ -162,8 +162,9 @@
       let dopen = document.getElementById('3dopen');
       let modal3d = document.getElementById('3item_modal')
       back_3item_modal_btn.addEventListener('click',function(){
-    modal3d.classList.add('hidden');
-})
+          canvas3d.innerHTML = "";
+          modal3d.classList.add('hidden');
+      })
       dopen.addEventListener('click',function(){
           modal3d.classList.remove('hidden')
           const scene = new THREE.Scene()
